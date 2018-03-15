@@ -6,22 +6,26 @@ int	main(void)
 	uint64_t bitmask, bitboard;
 
 	bitmask = 0;
-	bitboard = 5223372036854775807;
+	bitmask = ~((~bitmask) >> 1);
+	bitboard = 25;
 	
-	bitmask = ~bitmask;
-
 	while (bitmask)
 	{
-		if (i % (width)  == 0)
+		if (i && i % (width) == 0)
 		{
-			putchar('\n');
+			printf(": %llu\n", (unsigned long long) bitmask);
 		}
 		
-		printf("%lld", (long long) bitboard & bitmask);
+		if (bitboard & bitmask)
+		{
+			printf("%d", 1);
+		}		
+		else
+			printf("%d", 0);
+		bitmask = bitmask >> 1;
 		i++;
-		bitmask = bitmask << 1;
 	}
-
+	
 	putchar('\n');
 	return (0);
 }
